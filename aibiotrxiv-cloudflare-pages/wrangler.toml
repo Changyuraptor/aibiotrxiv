@@ -1,0 +1,11 @@
+name = "aibiotrxiv"
+compatibility_date = "2026-05-22"
+pages_build_output_dir = "public"
+
+# D1 and R2 bindings are intentionally managed in the Cloudflare Pages dashboard.
+# Cloudflare Pages → Settings → Bindings:
+#   D1 binding name: DB → aibiotrxiv-production-db
+#   R2 binding name: AIBIO_STORAGE → aibiotrxiv-user-content
+#
+# Do not leave placeholder database IDs here. A placeholder such as
+# REPLACE_WITH_D1_DATABASE_ID will make deployment fail.
