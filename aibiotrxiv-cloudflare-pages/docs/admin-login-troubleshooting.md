@@ -1,19 +1,12 @@
-# Admin login troubleshooting
+# v45 admin login fix
 
-If `/api/admin/login` returns 405, the Pages Function is not receiving the POST request or the route is being handled as a static asset.
+This version fixes a Cloudflare Pages runtime issue where `/api/admin/login` could return 500 after the Function was successfully deployed.
 
-This version uses a universal `onRequest()` handler for `/api/admin/login` and includes `public/_routes.json` to force `/api/*` through Pages Functions.
+The login Function no longer mutates `context.env`. Some Cloudflare Pages runtimes expose the environment object as read-only, so the previous `Object.assign(env, cfg)` step could fail before the session cookie was created.
 
-After deployment, open:
+If admin login still fails:
 
-```text
-https://YOUR_DOMAIN/api/admin/login
-```
-
-Expected GET response:
-
-```json
-{"ok":true,"endpoint":"/api/admin/login","method":"GET","message":"Admin login API is deployed. Use POST to log in."}
-```
-
-If you still receive 405 or an HTML page, Cloudflare did not deploy the `functions/` directory. Check Root directory and build output settings.
+- `401` means the account or password values do not match.
+- `429` means too many failed attempts; wait for the rate-limit window.
+- `500` with `missing` fields means one or more Production variables/secrets are absent.
+- `/api/admin/session` returning `401` before login is normal.
