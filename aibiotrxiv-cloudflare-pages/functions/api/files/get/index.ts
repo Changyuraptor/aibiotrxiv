@@ -1,2 +1,0 @@
-
-export async function onRequestGet({ request, env }: any){ const key=new URL(request.url).searchParams.get('key')||''; if(!key||!env.AIBIO_STORAGE) return new Response('Not found',{status:404}); const obj=await env.AIBIO_STORAGE.get(key); if(!obj) return new Response('Not found',{status:404}); return new Response(obj.body,{headers:{'content-type':obj.httpMetadata?.contentType||'application/octet-stream','cache-control':'public, max-age=3600'}}); }
