@@ -1,0 +1,18 @@
+AIBioTrXiv v48 rebuilt from v47
+
+Scope:
+- Started from aibiotrxiv-cloudflare-pages-v47.zip.
+- Fixed only mobile/tablet header navigation.
+- Did not apply later D1/R2/API/PayPal/admin changes from v48-v55.
+- Did not modify wrangler.toml status from v47 unless already present in v47 package.
+
+Changes:
+- Added /public/assets/js/mobile-nav.js.
+- Added mobile/tablet CSS rules to stylesheets.
+- Added Menu button to pages with .nav-links.
+- On mobile/tablet, header becomes compact and navigation opens from the right-side Menu button.
+
+Test:
+- PC width > 980px keeps normal desktop nav.
+- Mobile/tablet width <= 980px shows Menu button.
+- Menu contains Browse, Submission, Guidelines, Topics, Policies, About, Login when those links exist in page header.
