@@ -1,0 +1,17 @@
+AIBioTrXiv v50 from v49
+
+Fixed Cloudflare Pages Functions build error in D1 initializer routes.
+
+Problem fixed:
+- TypeScript string quoting bug around sqlite_schema WHERE type = 'table'.
+- Removed fragile imports in initializer aliases.
+- Added local JSON helper in initializer routes.
+
+Initializer routes included:
+- /api/init-database
+- /api/system/init-d1
+- /api/system/initd1
+- /api/init-d1
+- /api/initdatabase
+
+D1/R2 bindings remain Dashboard-managed. wrangler.toml is not included if it was absent in v49.

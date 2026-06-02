@@ -1,0 +1,1 @@
+import { clearCookie } from '../../_db'; export async function onRequest(){ return new Response(JSON.stringify({ok:true}), {headers:{'content-type':'application/json','Set-Cookie':clearCookie('aibio_member_session')}}); }

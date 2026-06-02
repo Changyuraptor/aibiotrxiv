@@ -1,0 +1,11 @@
+AIBioTrXiv v51
+
+Started from v50.
+Only mobile/tablet header navigation was changed.
+
+Fix:
+- Adds independent right-side Menu button on screens <= 1100px.
+- Menu panel always contains:
+  Browse, Submission, Guidelines, Topics, Policies, About, Login/Member dashboard.
+- Keeps PC header unchanged.
+- Does not modify D1, R2, PayPal, admin, submission, or database functions.
