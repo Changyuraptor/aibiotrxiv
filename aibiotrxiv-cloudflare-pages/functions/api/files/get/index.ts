@@ -1,0 +1,2 @@
+import { json } from '../../_shared';
+export async function onRequestGet({request,env}:any){ const key=new URL(request.url).searchParams.get('key')||''; if(!key)return json({ok:false,error:'Missing key'},400); if(!env.AIBIO_STORAGE)return json({ok:false,error:'R2 binding AIBIO_STORAGE is not configured'},500); const obj=await env.AIBIO_STORAGE.get(key); if(!obj)return json({ok:false,error:'File not found'},404); return new Response(obj.body,{headers:{'content-type':obj.httpMetadata?.contentType||'application/octet-stream','cache-control':'private, max-age=3600'}}); }
